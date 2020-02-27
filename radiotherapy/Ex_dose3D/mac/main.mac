@@ -1,0 +1,125 @@
+
+#=====================================================
+# VERBOSITY
+#=====================================================
+
+/control/execute mac/verbose.mac
+
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+# World
+/gate/world/geometry/setXLength 1 m
+/gate/world/geometry/setYLength 1 m
+/gate/world/geometry/setZLength 1 m
+/gate/world/setMaterial Air
+
+# Generate materials from Hounsfield units
+/gate/HounsfieldMaterialGenerator/SetMaterialTable                  data/Schneider2000MaterialsTable.txt
+/gate/HounsfieldMaterialGenerator/SetDensityTable                   data/Schneider2000DensitiesTable.txt
+/gate/HounsfieldMaterialGenerator/SetDensityTolerance               0.1 g/cm3
+/gate/HounsfieldMaterialGenerator/SetOutputMaterialDatabaseFilename data/patient-HUmaterials.db
+/gate/HounsfieldMaterialGenerator/SetOutputHUMaterialFilename       data/patient-HU2mat.txt
+/gate/HounsfieldMaterialGenerator/Generate
+
+/gate/world/daughters/name                      patient
+/gate/world/daughters/insert                    ImageNestedParametrisedVolume
+
+/gate/geometry/setMaterialDatabase              data/patient-HUmaterials.db
+/gate/patient/geometry/setHUToMaterialFile      data/patient-HU2mat.txt
+/gate/patient/geometry/setImage                 data/patient-2mm.mhd
+
+# optional : dump used image
+# /gate/patient/geometry/buildAndDumpLabeledImage  data/patient-2mm-labeled-NPV.mhd
+
+/gate/patient/placement/setTranslation 0 0 272 mm
+
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/gate/physics/addPhysicsList emstandard_opt1
+
+/gate/physics/Gamma/SetCutInRegion      world 10 mm
+/gate/physics/Electron/SetCutInRegion   world 10 mm
+/gate/physics/Positron/SetCutInRegion   world 10 mm
+
+/gate/physics/Gamma/SetCutInRegion      patient 0.1 mm
+/gate/physics/Electron/SetCutInRegion   patient 0.1 mm
+/gate/physics/Positron/SetCutInRegion   patient 0.1 mm
+
+/gate/physics/displayCuts
+
+
+#=====================================================
+# DETECTORS
+#=====================================================
+
+/gate/actor/addActor                     DoseActor  dose3d
+/gate/actor/dose3d/save                  output/3d-pat.mhd
+/gate/actor/dose3d/attachTo              patient
+/gate/actor/dose3d/stepHitType           random
+/gate/actor/dose3d/setPosition           0 0 0 cm
+/gate/actor/dose3d/setResolution         50 50 50
+/gate/actor/dose3d/saveEveryNSeconds     60
+/gate/actor/dose3d/enableEdep            true
+/gate/actor/dose3d/enableUncertaintyEdep true
+/gate/actor/dose3d/enableDose            true
+
+
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/stat-pat.txt
+/gate/actor/stat/saveEveryNSeconds 60
+
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+
+#=====================================================
+# BEAMS
+#=====================================================
+
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle gamma
+/gate/source/mybeam/gps/pos/type Beam
+/gate/source/mybeam/gps/pos/rot1 0 1 0
+/gate/source/mybeam/gps/pos/rot2 1 0 0
+/gate/source/mybeam/gps/pos/shape Circle
+/gate/source/mybeam/gps/pos/centre 0 0 0 mm
+/gate/source/mybeam/gps/pos/sigma_x 3 mm
+/gate/source/mybeam/gps/pos/sigma_y 3 mm
+/gate/source/mybeam/gps/ene/mono 10 MeV
+/gate/source/mybeam/gps/ene/type Gauss
+/gate/source/mybeam/gps/ene/sigma 1.0 MeV
+/gate/source/mybeam/gps/direction 0 0 1
+
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+/control/execute mac/visu.mac
+
+
+#=====================================================
+# START BEAMS
+#=====================================================
+
+# JamesRandom Ranlux64 MersenneTwister
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+#/tracking/verbose 1
+
+/gate/application/noGlobalOutput
+/gate/application/setTotalNumberOfPrimaries 1e3
+/gate/application/start

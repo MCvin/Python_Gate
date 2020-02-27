@@ -1,0 +1,122 @@
+
+#=====================================================
+# VERBOSITY
+#=====================================================
+
+/control/execute mac/verbose.mac
+
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+# World
+/gate/world/geometry/setXLength 1 m
+/gate/world/geometry/setYLength 1 m
+/gate/world/geometry/setZLength 1 m
+/gate/world/setMaterial Air
+
+
+# Water Box
+/gate/world/daughters/name              waterbox
+/gate/world/daughters/insert            box
+/gate/waterbox/geometry/setXLength      40 cm
+/gate/waterbox/geometry/setYLength      40 cm
+/gate/waterbox/geometry/setZLength      40 cm
+/gate/waterbox/placement/setTranslation 0 0 25 cm
+/gate/waterbox/setMaterial Water
+/gate/waterbox/vis/setVisible 1
+/gate/waterbox/vis/setColor blue
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/gate/physics/addPhysicsList emstandard_opt3
+
+/gate/physics/Gamma/SetCutInRegion      world 10 mm
+/gate/physics/Electron/SetCutInRegion   world 10 mm
+/gate/physics/Positron/SetCutInRegion   world 10 mm
+
+/gate/physics/Gamma/SetCutInRegion      waterbox 0.1 mm
+/gate/physics/Electron/SetCutInRegion   waterbox 0.1 mm
+/gate/physics/Positron/SetCutInRegion   waterbox 0.1 mm
+
+/gate/physics/displayCuts
+
+
+#=====================================================
+# DETECTORS
+#=====================================================
+
+/gate/actor/addActor                        DoseActor  depthdose
+/gate/actor/depthdose/save                  output/gamma-depth.txt
+/gate/actor/depthdose/attachTo              waterbox
+/gate/actor/depthdose/stepHitType           random
+/gate/actor/depthdose/setPosition           0 0 0 cm
+/gate/actor/depthdose/setResolution         1 1 100
+/gate/actor/depthdose/enableEdep            true
+/gate/actor/depthdose/enableUncertaintyEdep true
+/gate/actor/depthdose/enableDose            false
+
+/gate/actor/addActor                          DoseActor  doseprofile
+/gate/actor/doseprofile/save                  output/gamma-profile.txt
+/gate/actor/doseprofile/attachTo              waterbox
+/gate/actor/doseprofile/stepHitType           random
+/gate/actor/doseprofile/setPosition           0 0 0 cm
+/gate/actor/doseprofile/setResolution         100 1 1
+/gate/actor/doseprofile/enableEdep            true
+/gate/actor/doseprofile/enableUncertaintyEdep true
+/gate/actor/doseprofile/enableDose            false
+
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/gamma-stat.txt
+
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+
+#=====================================================
+# BEAMS
+#=====================================================
+
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle gamma
+/gate/source/mybeam/gps/pos/type Beam
+/gate/source/mybeam/gps/pos/rot1 0 1 0
+/gate/source/mybeam/gps/pos/rot2 1 0 0
+/gate/source/mybeam/gps/pos/shape Circle
+/gate/source/mybeam/gps/pos/centre 0 0 0 mm
+/gate/source/mybeam/gps/pos/sigma_x 3 mm
+/gate/source/mybeam/gps/pos/sigma_y 3 mm
+/gate/source/mybeam/gps/ene/mono 10 MeV
+/gate/source/mybeam/gps/ene/type Gauss
+/gate/source/mybeam/gps/ene/sigma 1.0 MeV
+/gate/source/mybeam/gps/direction 0 0 1
+
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+/control/execute mac/visu.mac
+
+
+#=====================================================
+# START BEAMS
+#=====================================================
+
+# JamesRandom Ranlux64 MersenneTwister
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+#/tracking/verbose 1
+/gate/application/noGlobalOutput
+/gate/application/setTotalNumberOfPrimaries 500
+/gate/application/start

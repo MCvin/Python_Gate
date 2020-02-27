@@ -1,0 +1,13 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = False
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 9.0909500000000002e-12 9.0909500000000002e-12 4.5452500000000002e-12
+CenterOfRotation = 0 0 0
+ElementSpacing = 4.4200000762939453 4.4200000762939453 4.4200000762939453
+DimSize = 110 110 220
+AnatomicalOrientation = ???
+ElementType = MET_FLOAT
+ElementDataFile = out-Edep-Uncertainty.raw

@@ -1,0 +1,93 @@
+
+#=====================================================
+# VERBOSITY
+#=====================================================
+
+/control/execute mac/verbose.mac
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+# World
+/gate/world/geometry/setXLength 1 m
+/gate/world/geometry/setYLength 1 m
+/gate/world/geometry/setZLength 1 m
+/gate/world/setMaterial Air
+
+# Patient or waterbox
+/control/execute mac/patient.mac
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/gate/physics/addPhysicsList emstandard_opt1
+/gate/physics/addProcess RadioactiveDecay
+
+/gate/physics/Gamma/SetCutInRegion      world 10 mm
+/gate/physics/Electron/SetCutInRegion   world 10 mm
+/gate/physics/Positron/SetCutInRegion   world 10 mm
+
+/gate/physics/Gamma/SetCutInRegion      phantom 0.1 mm
+/gate/physics/Electron/SetCutInRegion   phantom 0.1 mm
+/gate/physics/Positron/SetCutInRegion   phantom 0.1 mm
+
+/gate/physics/displayCuts
+
+
+#=====================================================
+# DETECTORS
+#=====================================================
+
+/gate/actor/addActor                     DoseActor  dose3D
+/gate/actor/dose3D/save                  output/out.mhd
+/gate/actor/dose3D/attachTo              phantom
+/gate/actor/dose3D/stepHitType           random
+/gate/actor/dose3D/setPosition           0 0 0 cm
+/gate/actor/dose3D/setResolution         110 110 220
+/gate/actor/dose3D/saveEveryNSeconds     60
+/gate/actor/dose3D/enableEdep            true
+/gate/actor/dose3D/enableUncertaintyEdep true
+/gate/actor/dose3D/enableSquaredEdep     false
+/gate/actor/dose3D/enableDose            true
+/gate/actor/dose3D/enableUncertaintyDose false
+/gate/actor/dose3D/enableNumberOfHits    false
+
+/gate/actor/addActor                     SimulationStatisticActor stat
+/gate/actor/stat/save                    output/stat.txt
+/gate/actor/stat/saveEveryNSeconds       20
+
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+/control/execute mac/visu.mac
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+# BEAMS
+#=====================================================
+
+/control/execute mac/source.mac
+
+#=====================================================
+# START BEAMS
+#=====================================================
+
+# JamesRandom Ranlux64 MersenneTwister
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+#/tracking/verbose 1
+
+/gate/application/setTotalNumberOfPrimaries 1e1
+/gate/application/start

@@ -1,0 +1,767 @@
+#
+#
+#
+# Version of header parameters (float)
+#
+version 000.000
+#
+# Scanner model number (integer)
+#
+model 2000
+#
+# Institution identification (string)
+#
+institution UCLA microPET P4
+#
+# Study type/description (string)
+#
+study  
+#
+# Data filename, possibly including path (string)
+#    NOTE: Filename may contain spaces, therefore the ENTIRE 
+#          line, up to the EOL, is used after the parameter name.
+#
+pet_raw.img
+#
+# Data file type (integer)
+#   0 - Unknown data file type
+#   1 - List mode data file
+#   2 - Sinogram data file
+#   3 - Normalization data file
+#   4 - Attenuation correction data file
+#   5 - Image data file
+#   6 - Blank data file
+#   8 - Mu map data file
+#
+file_type 5
+#
+# Acquisition mode (integer)
+#   0 - Unknown acquisition mode
+#   1 - Blank acquisition
+#   2 - Emission acquisition
+#   3 - Dynamic acquisition
+#   4 - Gated acquisition
+#   5 - Continuous bed motion acquisition
+#   6 - Singles transmission acquisition
+#   7 - Windowed coincidence transmission acquisition
+#   8 - Non-windowed coincidence transmission acquisition
+#
+acquisition_mode 2
+#
+# Number of frames in data file (integer)
+#
+total_frames 1
+#
+# Isotope description (string)
+#
+isotope F-18
+#
+# Isotope half-life, in secs (float)
+#
+isotope_half_life 6586.2
+#
+# Isotope branching fraction (float)
+#   NOTE: Frame scale factor DOES NOT include
+#         isotope branching fraction.
+#
+isotope_branching_fraction 0.967
+#
+# Transaxial crystals per block (integer)
+#
+transaxial_crystals_per_block 8
+#
+# Axial crystals per block (integer)
+#
+axial_crystals_per_block 8
+#
+# Crystal offset for intrinsic rotation (integer)
+#
+intrinsic_crystal_offset 4
+#
+# Number of transaxial blocks (integer)
+#
+transaxial_blocks 42
+#
+# Number of axial blocks (integer)
+#
+axial_blocks 4
+#
+# Transaxial crystal pitch, in cm (float)
+#
+transaxial_crystal_pitch 0.2444
+#
+# Axial crystal pitch, in cm (float)
+#
+axial_crystal_pitch 0.2423
+#
+# Ring radius to crystal face, in cm (float)
+#
+radius 13.0673
+#
+# Radial field-of-view, in cm (float)
+#
+radial_fov 12.067
+#
+# Point source radius, in cm (float)
+#
+pt_src_radius 11.049
+#
+# Point source encoder steps per revolution (integer)
+#
+pt_src_steps_per_rev 4096
+#
+# Default number of projections (integer)
+#
+default_projections 192
+#
+# Default number of transaxial angles (integer)
+#
+default_transaxial_angles 168
+#
+# Crystal thickness, in cm (float)
+#
+crystal_thickness 1
+#
+# Depth of interaction, in cm (float)
+#
+depth_of_interaction 0.4584
+#
+# Lower level energy threshold, in KeV (float)
+#
+lld 250
+#
+# Upper level energy threshold, in KeV (float)
+#
+uld 750
+#
+# Coincidence timing window, in nsecs (int)
+#
+timing_window 10
+#
+# Data type (integer)
+#   0 - Unknown data type
+#   1 - Byte (8-bits) data type
+#   2 - 2-byte integer - Vax/Intel style
+#   3 - 4-byte integer - Vax/Intel style
+#   4 - 4-byte float - Vax/Intel style
+#   5 - 4-byte float - IEEE/Sun style
+#   6 - 2-byte integer - Sun style
+#   7 - 4-byte integer - Sun style
+#
+data_type 4
+#
+# Data order (integer)
+#   0 - Element/Axis/View/Ring_Diff - view mode
+#   1 - Element/View/Axis/Ring_Diff - sinogram mode
+#  NOTE that ElVwAxRd (XYZW) is the data order for images.
+#    ElVwAxRd for images means that Z and Y are flipped.
+#
+data_order 1
+#
+# Span of data set (integer)
+#
+span 3
+#
+# Maximum ring difference of data set (integer)
+#
+ring_difference 31
+#
+# Number of dimensions in data set (integer)
+#     Order from fastest to slowest is XYZW
+#
+number_of_dimensions 3
+#
+# Size of X dimension in data set (integer)
+#
+x_dimension 128
+#
+# Size of Y dimension in data set (integer)
+#
+y_dimension 128
+#
+# Size of Z dimension in data set (integer)
+#
+z_dimension 127
+#
+# Size of W dimension in data set (integer)
+#
+w_dimension 1
+#
+# X filter and/or apodizing windows type (integer)
+#       and cutoff (float)
+#   0 - No filter
+#   1 - Ramp filter (backprojection) or no filter
+#   2 - First-order Butterworth window
+#   3 - Hanning window
+#   4 - Hamming window
+#   5 - Parzen window
+#   6 - Shepp filter
+#   7 - Second-order Butterworth window
+#   NOTE that a cutoff of 0.5 is the Nyquist point
+#     i.e 1.0 / (2.0 * sampling).
+#     Also, the Ramp and Shepp should ONLY be used
+#     for backprojection
+#
+x_filter 1 0.5
+#
+# Y apodizing filter type (integer) and cutoff (float)
+#   0 - No filter
+#   2 - First-order Butterworth window
+#   3 - Hanning window
+#   4 - Hamming window
+#   5 - Parzen window
+#   7 - Second-order Butterworth window
+#   NOTE that a cutoff of 0.5 is the Nyquist point
+#     i.e 1.0 / (2.0 * sampling).
+#
+y_filter 0 0.5
+#
+# Z apodizing filter type (integer) and cutoff (float)
+#   0 - No filter
+#   2 - First-order Butterworth window
+#   3 - Hanning window
+#   4 - Hamming window
+#   5 - Parzen window
+#   7 - Second-order Butterworth window
+#   NOTE that a cutoff of 0.5 is the Nyquist point
+#     i.e 1.0 / (2.0 * sampling).
+#
+z_filter 0 0.5
+#
+# Version of histogram program used (float)
+#
+histogram_version 001.300
+#
+# Rebinning type (integer)
+#   0 - Unknown, or no, algorithm type
+#   1 - Full 3D binning (span and ring difference)
+#   2 - Single-Slice Rebinning
+#   3 - Fourier Rebinning
+#
+rebinning_type 2
+#
+# Version of rebinning program used (float)
+#
+rebinning_version 001.200
+#
+# Reconstruction type (integer)
+#   0 - Unknown, or no, algorithm type
+#   1 - Filtered Backprojection
+#   2 - OSEM2d
+#
+recon_algorithm 2
+#
+# Version of reconstruction program used (float)
+#
+recon_version 001.200
+#
+# OSEM2D method (integer)
+#
+#   0 - Unweighted osem2d reconstruction
+#   1 - Attenuation weighted osem2d reconstruction
+#
+osem2d_method 0
+#
+# Number of osem2d subsets (integer)
+#
+osem2d_subsets 14
+#
+# Number of osem2d iterations (integer)
+#
+osem2d_iterations 10
+#
+# Number of EM iterations after osem2d iterations (integer)
+#
+osem2d_em_iterations 0
+#
+# Epsilon and power values for map regularization (float integer)
+#
+osem2d_map 0 1
+#
+# Large object osem2d x_offset in cm (float)
+#
+osem2d_x_offset 0
+#
+# Large object osem2d y_offset in cm (float)
+#
+osem2d_y_offset 0
+#
+# Large object osem2d zoom (float)
+#
+osem2d_zoom 1
+#
+# Deadtime correction applied to data set (integer)
+#   0 - No deadtime correction applied
+#   1 - Global estimate based on singles
+#   2 - CMS estimate based on singles
+#
+deadtime_correction_applied 1
+#
+# Decay correction applied to data set (integer)
+#     0 (FALSE) - Decay correction has NOT been applied
+#     !0 (TRUE) - Decay correction has been applied
+#
+decay_correction_applied 1
+#
+# Normalization applied to data set (integer)
+#   0 - No normalization applied
+#   1 - Point source inversion
+#   2 - Point source component based
+#   3 - Cylinder source inversion
+#   4 - Cylinder source component based
+#
+normalization_applied 3
+#
+# Normalization filename, possibly including path (string)
+#    NOTE: Filename may contain spaces, therefore the ENTIRE 
+#          line, up to the EOL, is used after the parameter name.
+#
+normalization_filename E:\Bing\ConcordeData\p4\24hrs_cylnorm_8_28_02_v1.nrm
+#
+# Attenuation applied to data set (integer)
+#   0 - No attenuation applied
+#   1 - Point source in windowed TX coincidence
+#   2 - Point source singles based TX
+#   3 - Segmented point source in TX coincidence
+#   4 - Segmented point source singles based TX
+#   5 - Calculated by geometry
+#   6 - Non-positron source singles based TX
+#   7 - Point source in non-windowed TX coincidence
+#
+attenuation_applied 0
+#
+# Arc correction applied to data set (integer)
+#     0 (FALSE) - Arc correction has NOT been applied
+#     !0 (TRUE) - Arc correction has been applied
+#
+arc_correction_applied 1
+#
+# Rotation, in degrees, applied to data set (not applied to OSEM2d reconstructions) (float)
+#
+rotation 0
+#
+# X offset, in cm, applied to data set (float)
+#
+x_offset 0
+#
+# Y offset, in cm, applied to data set (float)
+#
+y_offset 0
+#
+# Z offset, in cm, applied to data set (float)
+#
+z_offset 0
+#
+# Zoom applied to data set (float)
+#
+zoom 2.375
+#
+# Reconstructed pixel size, in cm (float)
+#     NOTE: pixel_size = (((X_crystal_pitch / 2.0) * X_dim) /
+#           (image_size * zoom)) * (effective_radius / radius)
+#
+pixel_size 0.08
+#
+# Calibration units (integer)
+#   0 - Unknown calibration units
+#   1 - nCi/cc
+#   2 - Bq/cc
+#
+calibration_units 0
+#
+# Calibration factor (float)
+#   NOTE: Frame scale factor DOES NOT include
+#         calibration factor.
+#
+calibration_factor 1
+#
+# Calibration source branching fraction (float)
+#   NOTE: Frame scale factor DOES NOT include
+#         calibration source branching fraction.
+#
+calibration_branching_fraction 1
+#
+# Number of singles rates in subheader (integer)
+#   NOTE: This normally is the number of blocks.
+#
+number_of_singles_rates 168
+#
+# Investigator identification (string)
+#
+investigator  
+#
+# Operator identification (string)
+#
+operator  
+#
+# Study identification (string)
+#
+study_identifier  
+#
+# Scan start date and time (string)
+#    Format is: Sun Sep 16 01:03:52 1973
+#
+scan_time Mon Sep 9 12:21:05 2002
+#
+# Injected compound (string)
+#
+injected_compound  
+#
+# Dose units (integer)
+#   0 - Unknown dose units
+#   1 - mCi
+#   2 - MBq
+#
+dose_units 0
+#
+# Injected dose (float)
+dose 0
+#
+# Injection date and time (string)
+#    Format is: Sun Sep 16 01:03:52 1973
+#
+injection_time  
+#
+# Injection decay correction factor (float)
+#   NOTE: Frame scale factor and decay correction factor
+#   DO NOT include injection decay correction factor.
+#
+injection_decay_correction 1
+#
+# Subject identifier (string)
+#
+subject_identifier  
+#
+# Subject genus (string)
+#
+subject_genus  
+#
+# Subject orientation (integer)
+#   0 - Unknown subject orientation
+#   1 - Feet first, prone
+#   2 - Head first, prone
+#   3 - Feet first, supine
+#   4 - Head first, supine
+#   5 - Feet first, right
+#   6 - Head first, right
+#   7 - Feet first, left
+#   8 - Head first, left
+#
+subject_orientation 0
+#
+# Length units (integer)
+#   0 - Unknown length units
+#   1 - millimeters
+#   2 - centimeters
+#   3 - inches
+#
+subject_length_units 0
+#
+# Subject weight (float)
+#
+subject_length 0
+#
+# Weight units (integer)
+#   0 - Unknown weight units
+#   1 - grams
+#   2 - ounces
+#   3 - kilograms
+#   4 - pounds
+#
+subject_weight_units 1
+#
+# Subject weight (float)
+#
+subject_weight 0
+#
+# Subject phenotype (string)
+#
+subject_phenotype  
+#
+# Study model (string)
+#
+study_model  
+#
+# Subject anesthesia (string)
+#
+anesthesia  
+#
+# Subject analgesia (string)
+#
+analgesia  
+#
+# Other drugs (string)
+#
+other_drugs  
+#
+# Food access (string)
+#
+food_access  
+#
+# Water access (string)
+#
+water_access  
+#
+# End of Header indicator 
+#
+end_of_header
+#
+# Header for frame 0, event_type 4, gate 0, bed 0.
+#
+#
+# Frame number (integer)
+#
+frame 0
+#
+# Event type (integer)
+#   0 - Unknown event type
+#   1 - Singles
+#   2 - Prompt events (coincidences)
+#   3 - Delay events
+#   4 - Trues (prompts - delays)
+#
+event_type 4
+#
+# Gate number (integer)
+#
+gate 0
+#
+# Bed number (integer)
+#
+bed 0
+#
+# Bed offset, in cm (float)
+#
+bed_offset 10653.5
+#
+# Ending horizontal bed offset, in cm (float)
+#
+ending_bed_offset 0
+#
+# Vertical bed offset, in cm (float)
+#
+vertical_bed_offset -1
+#
+# Data file offset to start of data (2 longs)
+#     Values are: low_part
+#             or: high_part low_part
+#
+data_file_pointer 0 0
+#
+# Frame start time, in secs (float)
+#
+frame_start 0
+#
+# Frame duration, in secs (float)
+#
+frame_duration 1804.88
+#
+# Scale factor for data set (float)
+#
+scale_factor 0.000554053
+#
+# Minimum value in data set (float)
+#
+minimum 0
+#
+# Maximum value in data set (float)
+#
+maximum 1274.07
+#
+# Deadtime correction for data set (float)
+#             NOTE: Scale factor INCLUDES this value.
+#
+deadtime_correction 1
+#
+# Global decay correction applied to data set (float)
+#             NOTE: Scale factor INCLUDES this value.
+#
+decay_correction 1.09798
+#
+# Prompts count for data set (long)
+#
+prompts 261434074
+#
+# Delays count for data set (long)
+#
+delays 30977137
+#
+# Trues count for data set (long)
+#
+trues 230456937
+#
+# Singles rate array (integer  float)
+#       block_number    singles/sec
+#
+singles 0 747
+singles 1 700
+singles 2 718
+singles 3 600
+singles 4 704
+singles 5 753
+singles 6 636
+singles 7 707
+singles 8 691
+singles 9 667
+singles 10 664
+singles 11 676
+singles 12 713
+singles 13 674
+singles 14 689
+singles 15 638
+singles 16 699
+singles 17 707
+singles 18 671
+singles 19 680
+singles 20 702
+singles 21 670
+singles 22 691
+singles 23 631
+singles 24 640
+singles 25 693
+singles 26 683
+singles 27 715
+singles 28 726
+singles 29 702
+singles 30 740
+singles 31 778
+singles 32 695
+singles 33 732
+singles 34 739
+singles 35 777
+singles 36 675
+singles 37 696
+singles 38 708
+singles 39 697
+singles 40 713
+singles 41 761
+singles 42 745
+singles 43 741
+singles 44 735
+singles 45 793
+singles 46 739
+singles 47 769
+singles 48 762
+singles 49 734
+singles 50 722
+singles 51 730
+singles 52 735
+singles 53 752
+singles 54 730
+singles 55 744
+singles 56 738
+singles 57 749
+singles 58 734
+singles 59 703
+singles 60 717
+singles 61 691
+singles 62 758
+singles 63 721
+singles 64 717
+singles 65 676
+singles 66 756
+singles 67 706
+singles 68 754
+singles 69 726
+singles 70 731
+singles 71 756
+singles 72 708
+singles 73 807
+singles 74 715
+singles 75 747
+singles 76 730
+singles 77 724
+singles 78 802
+singles 79 790
+singles 80 734
+singles 81 747
+singles 82 773
+singles 83 751
+singles 84 779
+singles 85 783
+singles 86 707
+singles 87 756
+singles 88 761
+singles 89 756
+singles 90 743
+singles 91 780
+singles 92 670
+singles 93 648
+singles 94 741
+singles 95 773
+singles 96 732
+singles 97 740
+singles 98 714
+singles 99 796
+singles 100 724
+singles 101 763
+singles 102 721
+singles 103 730
+singles 104 768
+singles 105 775
+singles 106 693
+singles 107 726
+singles 108 739
+singles 109 740
+singles 110 726
+singles 111 665
+singles 112 712
+singles 113 717
+singles 114 746
+singles 115 776
+singles 116 731
+singles 117 742
+singles 118 718
+singles 119 713
+singles 120 768
+singles 121 848
+singles 122 790
+singles 123 719
+singles 124 771
+singles 125 751
+singles 126 717
+singles 127 707
+singles 128 656
+singles 129 736
+singles 130 673
+singles 131 784
+singles 132 705
+singles 133 671
+singles 134 661
+singles 135 688
+singles 136 688
+singles 137 705
+singles 138 662
+singles 139 736
+singles 140 656
+singles 141 674
+singles 142 704
+singles 143 740
+singles 144 710
+singles 145 728
+singles 146 743
+singles 147 724
+singles 148 662
+singles 149 742
+singles 150 655
+singles 151 690
+singles 152 692
+singles 153 641
+singles 154 688
+singles 155 658
+singles 156 706
+singles 157 728
+singles 158 715
+singles 159 702
+singles 160 738
+singles 161 702
+singles 162 723
+singles 163 674
+singles 164 677
+singles 165 780
+singles 166 722
+singles 167 708
+#
+# End of Header indicator 
+#
+end_of_header

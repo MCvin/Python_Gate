@@ -1,0 +1,13 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = False
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 1.52 1.52 1.22
+CenterOfRotation = 0 0 0
+ElementSpacing = 5.0399999618530273 5.0399999618530273 4.440000057220459
+DimSize = 50 50 50
+AnatomicalOrientation = ???
+ElementType = MET_FLOAT
+ElementDataFile = 3d-gamma-Dose.raw

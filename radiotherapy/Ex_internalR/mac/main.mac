@@ -3,29 +3,29 @@
 # VERBOSITY
 #=====================================================
 
-/control/execute mac/verbose.mac
+/control/execute                    mac/verbose.mac
 
 #=====================================================
 # GEOMETRY
 #=====================================================
 
-/gate/geometry/setMaterialDatabase data/GateMaterials.db
+/gate/geometry/setMaterialDatabase  data/GateMaterials.db
 
 # World
-/gate/world/geometry/setXLength 1 m
-/gate/world/geometry/setYLength 1 m
-/gate/world/geometry/setZLength 1 m
-/gate/world/setMaterial Air
+/gate/world/geometry/setXLength     1 m
+/gate/world/geometry/setYLength     1 m
+/gate/world/geometry/setZLength     1 m
+/gate/world/setMaterial             Air
 
 # Patient or waterbox
-/control/execute mac/patient.mac
+/control/execute                    mac/patient.mac
 
 #=====================================================
 # PHYSICS
 #=====================================================
 
-/gate/physics/addPhysicsList emstandard_opt1
-/gate/physics/addProcess RadioactiveDecay
+/gate/physics/addPhysicsList            emstandard_opt1
+/gate/physics/addProcess                RadioactiveDecay
 
 /gate/physics/Gamma/SetCutInRegion      world 10 mm
 /gate/physics/Electron/SetCutInRegion   world 10 mm
@@ -89,6 +89,6 @@
 
 #/tracking/verbose 1
 
-/gate/application/setTotalNumberOfPrimaries 1e2
+/gate/application/setTotalNumberOfPrimaries 1e3
 /gate/application/start
 

@@ -1,0 +1,118 @@
+$IAEA_INDEX:
+700 // VarianTrueBeam_6MV_01.IAEAphsp : IAEA website: http://www-nds.iaea.org/phsp/photon/
+
+$TITLE:
+Varian TrueBeam 6MV photon beam, cylindrical patient-independent phase space 
+
+$FILE_TYPE:
+0
+
+$CHECKSUM:
+1309442500
+
+$RECORD_CONTENTS:
+    1     // X is stored ?
+    1     // Y is stored ?
+    1     // Z is stored ?
+    1     // U is stored ?
+    1     // V is stored ?
+    1     // W is stored ?
+    0     // Weight is stored ?
+    0     // Extra floats stored ?
+    0     // Extra longs stored ?
+
+$RECORD_CONSTANT:
+     1.0000     // Constant Weight
+
+$RECORD_LENGTH:
+25
+
+$BYTE_ORDER:
+1234
+
+$ORIG_HISTORIES:
+1147392000
+
+$PARTICLES:
+52377701
+
+$PHOTONS:
+51767792
+
+$ELECTRONS:
+590071
+
+$POSITRONS:
+19838
+
+$TRANSPORT_PARAMETERS:
+Standard electromagnetic processes including G4UrbanMscModel2 for multiple scattering
+
+$MONTE_CARLO_CODE_VERSION:
+Geant4.9.2.p01
+
+$MACHINE_TYPE:
+LSF batch system with 1800 multi-core servers.
+
+$GLOBAL_PHOTON_ENERGY_CUTOFF:
+0.001207
+$GLOBAL_PARTICLE_ENERGY_CUTOFF:
+0.0001
+
+$COORDINATE_SYSTEM_DESCRIPTION: 
+Cartesian, right-handed:
+The origin is inside the target bottom, x=y=0 is the central position of the target;
+Positive x-axis is towards the linac, parallel to the upper jaws movement;
+Positive z-axis is towards the water phantom or patient;
+
+//  OPTIONAL INFORMATION
+
+$BEAM_NAME: 
+6MV photon beam stored on a cylindrical surface 
+
+$FIELD_SIZE: 
+Field-independent, phase space stored above the movable upper jaws.
+
+$NOMINAL_SSD:
+100 cm
+
+$MC_INPUT_FILENAME:
+Parmela input file with 71,712 particles provided by in-house simulations at Varian;
+
+$VARIANCE_REDUCTION_TECHNIQUES:
+NONE
+
+$INITIAL_SOURCE_DESCRIPTION:
+Parmela Phase Space with a FWHM for the x- and y-coordinates of 1 mm;
+The FWHM for the x- and y-direction cosines are equal to 0.002;
+The energy spectrum is non-Gaussian with a peak at 6.13 MeV and a tail extending up to 6.35 MeV.
+
+$PUBLISHED_REFERENCE:
+Phys. Med. Biol. 55, N211-N220 (2010)
+
+$AUTHORS:
+M. Constantin (1), D. Constantin (1), P.J. Keall (1), A. Narula (2), M. Svatos (2), and J. Perl (3)
+
+$INSTITUTION:
+(1) Dept. of Radiation Oncology, Radiation Physics Division, Stanford University, Stanford, CA 94304
+(2) Varian Medical Systems, Inc., 3100 Hansen Way, Palo Alto, CA 94304
+(3) SLAC National Accelerator Laboratory, Menlo Park, CA 94025
+
+$LINK_VALIDATION:
+http://iopscience.iop.org/0031-9155/55/8/N03
+
+$ADDITIONAL_NOTES:
+This is IAEA header as defined in the technical 
+report IAEA(NDS)-0484, Vienna, 2006
+
+$STATISTICAL_INFORMATION_PARTICLES:
+//        Weight        Wmin       Wmax       <E>         Emin         Emax    Particle
+      5.17678E+07          1          1      1.232      0.001207       6.308   PHOTONS
+           590071          1          1     0.7586       1.3E-05       6.154   ELECTRONS
+            19838          1          1      1.163       0.01163       4.704   POSITRONS
+
+$STATISTICAL_INFORMATION_GEOMETRY:
+ -30.3715  30.3717
+ -30  30
+ 17.7671  27.3515
+

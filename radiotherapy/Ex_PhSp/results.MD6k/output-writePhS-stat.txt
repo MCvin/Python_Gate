@@ -1,0 +1,11 @@
+# NumberOfRun = 2
+# NumberOfEvents = 100000
+# NumberOfTracks = 21498954
+# NumberOfSteps = 94666262
+# NumberOfGeometricalSteps = 51420342
+# NumberOfPhysicalSteps = 43245920
+# ElapsedTimeWoInit = 434.531
+# ElapsedTime = 448.636
+# StartDate = Wed Feb 18 09:39:07 2015
+# EndDate = Wed Feb 18 09:42:52 2015
+# Speedup = 1.99393777778

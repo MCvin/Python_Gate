@@ -111,6 +111,7 @@
 
 /gate/actor/addActor                          SimulationStatisticActor stat
 /gate/actor/stat/save                         output/simu-stats.txt
+/gate/actor/stat/saveEveryNSeconds            30
 
 #=====================================================
 # INITIALISATION
@@ -150,5 +151,5 @@
 /gate/random/setEngineName                  MersenneTwister
 /gate/random/setEngineSeed                  auto
 
-/gate/application/setTotalNumberOfPrimaries 1e3
+/gate/application/setTotalNumberOfPrimaries 1e5
 /gate/application/start

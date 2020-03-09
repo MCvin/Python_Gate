@@ -4,7 +4,6 @@
 
 /control/execute    mac/verbose.mac
 
-
 #=====================================================
 # GEOMETRY
 #=====================================================
@@ -37,7 +36,6 @@
 
 /gate/patient/placement/setTranslation          0 0 272 mm
 
-
 #=====================================================
 # PHYSICS
 #=====================================================
@@ -54,13 +52,12 @@
 
 /gate/physics/displayCuts
 
-
 #=====================================================
-# DETECTORS
+# OUTPUTS
 #=====================================================
 
 /gate/actor/addActor                        DoseActor  dose3d
-/gate/actor/dose3d/save                     output/3d-gamma.mhd
+/gate/actor/dose3d/save                     output/3d.mhd
 /gate/actor/dose3d/attachTo                 patient
 /gate/actor/dose3d/stepHitType              random
 /gate/actor/dose3d/setPosition              0 0 0 cm
@@ -74,13 +71,17 @@
 /gate/actor/stat/save                       output/stat-pat.txt
 /gate/actor/stat/saveEveryNSeconds          60
 
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+/control/execute mac/visu.mac
 
 #=====================================================
 # INITIALISATION
 #=====================================================
 
 /gate/run/initialize
-
 
 #=====================================================
 # BEAMS
@@ -99,14 +100,6 @@
 /gate/source/mybeam/gps/ene/type        Gauss
 /gate/source/mybeam/gps/ene/sigma       1.0 MeV
 /gate/source/mybeam/gps/direction       0 0 1
-
-
-#=====================================================
-# VISUALISATION
-#=====================================================
-
-/control/execute mac/visu.mac
-
 
 #=====================================================
 # START BEAMS

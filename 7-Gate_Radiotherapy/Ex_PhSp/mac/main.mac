@@ -1,4 +1,3 @@
-
 #=====================================================
 # VERBOSITY
 #=====================================================
@@ -55,7 +54,7 @@
 /gate/physics/Positron/SetCutInRegion   waterbox 0.5 mm
 
 #=====================================================
-# DETECTORS
+# ACTORS AND OUTPUTS
 #=====================================================
 
 # ----------------------------------------------------
@@ -80,7 +79,7 @@
 # the following actor stores 3D Dose/Edep distributions
 
 /gate/actor/addActor                                DoseActor  doseDistribution
-/gate/actor/doseDistribution/attachTo    	        waterbox
+/gate/actor/doseDistribution/attachTo               waterbox
 /gate/actor/doseDistribution/stepHitType            random
 /gate/actor/doseDistribution/setPosition            0 0 0 mm
 /gate/actor/doseDistribution/setVoxelSize           5 5 5 mm

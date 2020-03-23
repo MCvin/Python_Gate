@@ -1,6 +1,6 @@
 # Python_Gate
 
-python4gate is a repository of Python notebooks for [GATE](https://github.com/OpenGATE/Gate/) applications.
+Python_Gate is a repository of Python notebooks for [GATE](https://github.com/OpenGATE/Gate/) applications.
 
 The Python notebooks currently cover:
 * GATE outputs and how to read them with Python
